@@ -9,17 +9,23 @@ final class backward_primesTest extends TestCase
     public function testEmptyOneNumberNotPrime() 
     {
         $result = getBackwardPrimes(14, 14);
-        $r = $this->assertEmpty($result);
+        $this->assertEmpty($result);
     }
     public function testOneNumberIsPrime()
     {
         $result = getBackwardPrimes(13, 13);
-        $r = $this->assertEquals([13], $result);
+        $this->assertEquals([13], $result);
     }
-    public function testFirstNumberIsBigger()
+/*    public function testFirstNumberIsBigger()
     {
         $result = getBackwardPrimes(20, 1);
-        $r = $this->assertEquals([], $result);
+        $this->assertEquals(null, $result);
+    }  */
+    
+    public function testItThrowsExceptionIfBiggerFirstNumber()
+    {
+        $r = $this->expectException(Exception::class);
+        getBackwardPrimes(20, 1);
     }
 
 
