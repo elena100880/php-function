@@ -16,7 +16,7 @@ function getBackwardPrimes ($start, $end)
 
     $arrayOfBackwardPrimes = [];
 
-    if ($end < $start) throw new Exception ();
+    if ($end < $start) throw new RangeException ("second number is bigger!<br>");
 
     else 
     {
@@ -35,12 +35,20 @@ function getBackwardPrimes ($start, $end)
 
 function printBackwardPrimes ($start, $end)
 {
-    $result = getBackwardPrimes ($start, $end);
+    try 
+    {
+        $result = getBackwardPrimes ($start, $end);
 
-    if (isset($result) and !empty($result) and is_array($result) ) print implode (', ', getBackwardPrimes ($start, $end) );
+        if (isset($result) and is_array($result) ) print implode (', ', getBackwardPrimes ($start, $end) );
 
-    else print '<br><br> NO BACKWORD PRIMES';
-    
+        else print '<br><br> NO BACKWORD PRIMES';
+    }
+    catch (Exception $e)
+    {
+        echo 'SECOND NUMBER MUST BE SMALLER!!<br><br>';
+        echo 'Developer information: <br>'.$e;
+    }
 }
 
-printBackwardPrimes (13, 100);
+//printBackwardPrimes (13, 1);
+//print RangeException::class;

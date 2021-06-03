@@ -3,7 +3,6 @@
 include "src/backward_primes.php";
 use PHPUnit\Framework\TestCase;
 
-
 final class backward_primesTest extends TestCase
 {
     public function testEmptyOneNumberNotPrime() 
@@ -24,9 +23,9 @@ final class backward_primesTest extends TestCase
     
     public function testItThrowsExceptionIfBiggerFirstNumber()
     {
-        $r = $this->expectException(Exception::class);
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('number');
+               
         getBackwardPrimes(20, 1);
     }
-
-
 }
